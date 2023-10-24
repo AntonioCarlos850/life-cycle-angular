@@ -6,32 +6,37 @@ import { Injectable } from '@angular/core';
 })
 export class ListaDeCompraService {
 
-  private listaDeCompra: Item[] = [
-    {
-      "id": 1,
-      "nome": "Queijo prato",
-      "data": "Segunda-feira (31/10/2022) às 08:30",
-      "comprado": false
-    },
-    {
-      "id": 2,
-      "nome": "Leite integral",
-      "data": "Segunda-feira (31/10/2022) às 08:30",
-      "comprado": false
-    },
-    {
-      "id": 3,
-      "nome": "Mamão papaia",
-      "data": "Segunda-feira (31/10/2022) às 08:30",
-      "comprado": true
-    },
-  ]
+  private purchaseList: Item[] = [];
 
   constructor() {
-    console.log('Instanciando dependências necessárias para o serviço.');
+    this.purchaseList = JSON.parse(localStorage.getItem('items') ?? '[]')
   }
 
-  getListaDeCompra(){
-    return this.listaDeCompra;
+  updateLocalStorage(): void {
+    localStorage.setItem('items', JSON.stringify(this.purchaseList));
+  }
+
+  getPurchaseList() {
+    return this.purchaseList;
+  }
+
+  createItem(name: string) {
+    const lastId = this.purchaseList.length ? this.purchaseList[this.purchaseList.length - 1].id : 0;
+    this.purchaseList.push({
+      id: Number(lastId) + 1,
+      nome: name,
+      data: new Date().toLocaleDateString('pt-BR'),
+      comprado: false
+    });
+  }
+
+  editItem(id: number, data: Item) {
+    const index = this.purchaseList.findIndex((x) => x.id == id);
+    this.purchaseList.splice(index, 1, data);
+  }
+
+  deleteItem(id: number | string) {
+    const index = this.purchaseList.findIndex(x => x.id == id);
+    this.purchaseList.splice(index, 1);
   }
 }

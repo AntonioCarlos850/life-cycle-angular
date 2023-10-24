@@ -1,9 +1,17 @@
 <section class="main">
-  <app-input>
+  <app-input [item]="editingItem">
   </app-input>
   <div class="container">
     <div class="lista">
       <h4 class="title-list">Lista de Compras</h4>
+      <div *ngIf="purchaseList; else noneData">
+        <div *ngFor="let item of purchaseList">
+          <app-item [item]="item" (isEditing)="editItem($event)"></app-item>
+        </div>
+      </div>
+      <ng-template #noneData>
+        <small>Não tem item na lista.</small>
+      </ng-template>
     </div>
   </div>
 </section>

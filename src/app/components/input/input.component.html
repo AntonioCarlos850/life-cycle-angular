@@ -1,4 +1,8 @@
 <form class="add-item">
-  <input type="text" name="item" placeholder="Digite o item que deseja adicionar">
-  <button type="submit">Salvar item</button>
+  <input type="text" name="item"
+    (keypress.enter)="isEditing ? edit() : create()"
+    [(ngModel)]="name"
+    placeholder="Digite o item que deseja adicionar"
+  >
+  <button type="submit" (click)="isEditing ? edit() : create()" style="cursor: pointer;">Salvar item</button>
 </form>

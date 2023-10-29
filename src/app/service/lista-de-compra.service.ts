@@ -30,7 +30,7 @@ export class ListaDeCompraService {
     });
   }
 
-  editItem(id: number, data: Item) {
+  editItem(id: number | string, data: Item) {
     const index = this.purchaseList.findIndex((x) => x.id == id);
     this.purchaseList.splice(index, 1, data);
   }

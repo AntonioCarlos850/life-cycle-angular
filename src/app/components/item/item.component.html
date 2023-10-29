@@ -3,6 +3,7 @@
   type="checkbox"
   name="comprado"
   [checked]="item.comprado"
+  (click)="checkItem()"
   id="comprado">
 <p class="description">{{item.nome}}</p>
 <div class="d-contents">

@@ -23,4 +23,9 @@ export class ItemComponent {
   editItem() {
     this.isEditing.emit(this.item);
   }
+
+  checkItem() {
+    this.item.comprado = !this.item.comprado;
+    this.service.editItem(Number(this.item.id), this.item);
+  }
 }

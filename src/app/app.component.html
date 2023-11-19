@@ -5,7 +5,7 @@
     <div class="lista">
       <h4 class="title-list">Lista de Compras</h4>
       <div *ngIf="purchaseList; else noneData">
-        <div *ngFor="let item of purchaseList">
+        <div *ngFor="let item of purchaseList" @delete @create>
           <app-item [item]="item" (isEditing)="editItem($event)"></app-item>
         </div>
       </div>

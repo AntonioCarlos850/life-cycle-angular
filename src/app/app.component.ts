@@ -1,11 +1,16 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { ListaDeCompraService } from './service/lista-de-compra.service';
 import { Item } from './interfaces/iItem';
+import { createTrigger, deleteTrigger } from './animations/crud';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    deleteTrigger,
+    createTrigger
+  ]
 })
 export class AppComponent implements OnInit, DoCheck{
   title = 'app-lista-de-compras';

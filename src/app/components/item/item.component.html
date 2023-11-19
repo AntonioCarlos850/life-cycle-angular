@@ -4,6 +4,7 @@
   name="comprado"
   [checked]="item.comprado"
   (click)="checkItem()"
+  [@click]="item.comprado ? 'checked' : 'unchecked'"
   id="comprado">
 <p class="description">{{item.nome}}</p>
 <div class="d-contents">

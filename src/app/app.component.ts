@@ -2,6 +2,7 @@ import { Component, DoCheck, OnInit } from '@angular/core';
 import { ListaDeCompraService } from './service/lista-de-compra.service';
 import { Item } from './interfaces/iItem';
 import { createTrigger, deleteTrigger } from './animations/crud';
+import { enterAnimation } from './animations/item';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { createTrigger, deleteTrigger } from './animations/crud';
   styleUrls: ['./app.component.css'],
   animations: [
     deleteTrigger,
-    createTrigger
+    createTrigger,
+    enterAnimation
   ]
 })
 export class AppComponent implements OnInit, DoCheck{

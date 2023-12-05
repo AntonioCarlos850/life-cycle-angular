@@ -4,9 +4,9 @@
   <div class="container">
     <div class="lista">
       <h4 class="title-list">Lista de Compras</h4>
-      <div *ngIf="purchaseList; else noneData">
+      <div *ngIf="purchaseList; else noneData" @enterAnimation>
         <div *ngFor="let item of purchaseList" @delete @create>
-          <app-item [item]="item" (isEditing)="editItem($event)"></app-item>
+          <app-item [item]="item" (isEditing)="editItem($event)" class="item"></app-item>
         </div>
       </div>
       <ng-template #noneData>
